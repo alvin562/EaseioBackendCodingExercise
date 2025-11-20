@@ -1,0 +1,6 @@
+@EaseioBackendCodingExercise_HostAddress = http://localhost:5245
+
+GET {{EaseioBackendCodingExercise_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
