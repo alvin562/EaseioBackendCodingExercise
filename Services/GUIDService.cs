@@ -19,11 +19,11 @@ namespace EaseioBackendCodingExercise.Services
         // public async Task<List<GUIDRecord>> GetAllAsync() =>
         //     await _context.GUIDRecords.ToListAsync();
 
-        // public async Task CreateAsync(GUIDRecord record)
-        // {
-        //     _context.GUIDRecords.Add(record);
-        //     await _context.SaveChangesAsync();
-        // }
+        public async Task CreateAsync(GUIDRecord record)
+        {
+            _context.GUIDRecords.Add(record);
+            await _context.SaveChangesAsync();
+        }
 
         // public async Task UpdateAsync(GUIDRecord record)
         // {

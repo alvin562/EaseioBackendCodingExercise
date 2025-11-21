@@ -3,11 +3,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace EaseioBackendCodingExercise.Models
 {
-    public class GUIDRecord
+    public class CreateGUID
     {
-        [Key]
-        public string Guid { get; set; } = null!;
         public DateTimeOffset Expires { get; set; }
+
+        [Required]
         public string User { get; set; } = null!;
     }
 }
