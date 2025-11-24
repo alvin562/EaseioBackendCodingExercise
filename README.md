@@ -34,9 +34,9 @@ This is a simple **CRUD Web API** built with **ASP.NET Core** and **C#** for man
 
 ### Running the API
 
-1. **Clone the repository**
+**Clone the repository**
 
-`git clone https://github.com/alvin562/EaseioBackendCodingExercise.git`
+`git clone https://github.com/alvin562/EaseioBackendCodingExercise.git`  
 `cd EaseioBackendCodingExercise`
 
 Once you have the .NET SDK and dotnet CLI installed on your machine, you can start the application by running the following command in the root directory
