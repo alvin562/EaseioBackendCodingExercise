@@ -28,4 +28,5 @@ app.UseHttpsRedirection();
 app.UseRouting();
 app.MapControllers();
 
+Console.WriteLine("Starting GUID CRUD Application");
 app.Run();

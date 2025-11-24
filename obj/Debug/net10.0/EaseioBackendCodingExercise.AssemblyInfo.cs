@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EaseioBackendCodingExercise")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+19835a3b0014483c226342f55b8ee891c50db6d5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+87d51fd51083b7e86b68f6dc95cf7bb126b067b8")]
 [assembly: System.Reflection.AssemblyProductAttribute("EaseioBackendCodingExercise")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EaseioBackendCodingExercise")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
