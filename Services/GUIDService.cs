@@ -16,13 +16,19 @@ namespace EaseioBackendCodingExercise.Services
         public async Task<GUIDRecord?> GetByGuidAsync(string guid) =>
             await _context.GUIDRecords.FindAsync(guid);
 
-        // public async Task<List<GUIDRecord>> GetAllAsync() =>
-        //     await _context.GUIDRecords.ToListAsync();
-
-        public async Task CreateAsync(GUIDRecord record)
+        public async Task<bool> CreateAsync(GUIDRecord record)
         {
+            var foundRecord = await _context.GUIDRecords.FindAsync(record.Guid);
+
+            if (foundRecord != null)
+            {
+                return false;   // record already exists
+            }
+
             _context.GUIDRecords.Add(record);
             await _context.SaveChangesAsync();
+
+            return true;
         }
 
         public async Task<bool> UpdateAsync(string guid, DateTimeOffset newExpires)

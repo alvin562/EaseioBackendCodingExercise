@@ -30,6 +30,11 @@ namespace EaseioBackendCodingExercise.Controllers
                 return NotFound();
             } 
 
+            if (record.Expires < DateTimeOffset.UtcNow)
+            {
+                return NotFound("Record found but it is expired.");
+            }
+
             return Ok(record);
         }
 
@@ -46,9 +51,14 @@ namespace EaseioBackendCodingExercise.Controllers
 
             var record = new GUIDRecord(guid, GetExpireDate(request), request.User);
 
-            await _service.CreateAsync(record);
+            bool created = await _service.CreateAsync(record);
 
-            return Ok();
+            if (!created)
+            {
+                return Conflict("Unable to create record. A record with guid " + guid + " already exists.");
+            }
+
+            return CreatedAtAction(nameof(GetGUIDRecord), new { guid = record.Guid }, record);
         }
 
         [HttpPost]
@@ -59,9 +69,14 @@ namespace EaseioBackendCodingExercise.Controllers
 
             var record = new GUIDRecord(guid, GetExpireDate(request), request.User);
 
-            await _service.CreateAsync(record);
+            bool created = await _service.CreateAsync(record);
 
-            return Ok();
+            if (!created)
+            {
+                return Conflict("Unable to create record. A record with guid " + guid + " already exists.");
+            }
+
+            return CreatedAtAction(nameof(GetGUIDRecord), new { guid = record.Guid }, record);
         }
 
         [HttpPut("{guid}")]
@@ -74,19 +89,18 @@ namespace EaseioBackendCodingExercise.Controllers
                 return NotFound();
             }
 
-            return Ok();
+            return NoContent();
         }
 
         [HttpDelete("{guid}")]
         public async Task<IActionResult> DeleteGUIDRecord(string guid)
         {
-            // fix delete not found
             var recordFound = await _service.DeleteAsync(guid);
 
             if (!recordFound)
             {
                 Console.WriteLine("Unable to delete record as GUID is not found: " + guid);
-                return NotFound();
+                return NotFound("Unable to delete record as GUID is not found: " + guid);
             }
 
             return Ok();
