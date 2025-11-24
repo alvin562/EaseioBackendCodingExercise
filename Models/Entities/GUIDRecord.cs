@@ -18,5 +18,11 @@ namespace EaseioBackendCodingExercise.Models
             Expires = expires;
             User = user;
         }
+
+        // stub constructor for deletes
+        public GUIDRecord(string guid)
+        {
+            Guid = guid;
+        }
     }
 }

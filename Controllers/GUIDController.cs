@@ -33,14 +33,9 @@ namespace EaseioBackendCodingExercise.Controllers
             return Ok(record);
         }
 
-        [HttpPost("{guid?}")]
-        public async Task<IActionResult> CreateGUIDRecord(string? guid, [FromBody] CreateGUID request)
+        [HttpPost("{guid}")]
+        public async Task<IActionResult> CreateGUIDRecord(string guid, [FromBody] CreateGUID request)
         {
-            if (guid == null)
-            {
-                guid = GenerateGUID();
-            }
-
             // Regex for 32 hexadecimal characters
             var hexPattern = @"^[0-9A-F]{32}$";
 
@@ -49,7 +44,7 @@ namespace EaseioBackendCodingExercise.Controllers
                 return BadRequest("GUID must be a 32-character uppercase hexadecimal string.");
             }
 
-            var record = new GUIDRecord(guid, request.Expires, request.User);
+            var record = new GUIDRecord(guid, GetExpireDate(request), request.User);
 
             await _service.CreateAsync(record);
 
@@ -59,22 +54,59 @@ namespace EaseioBackendCodingExercise.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateGUIDRecord([FromBody] CreateGUID request)
         {
-            Console.WriteLine("Received request to create GUID record.");
-
             var guid = GenerateGUID();
-            Console.WriteLine(guid);
+            Console.WriteLine("Creating record with the following generated GUID: " + guid);
 
-            var record = new GUIDRecord(guid, request.Expires, request.User);
+            var record = new GUIDRecord(guid, GetExpireDate(request), request.User);
 
             await _service.CreateAsync(record);
 
             return Ok();
         }
 
+        [HttpPut("{guid}")]
+        public async Task<IActionResult> UpdateGUIDRecord(string guid, [FromBody] UpdateGUID request)
+        {
+            bool updated = await _service.UpdateAsync(guid, request.Expires);
+
+            if (!updated)
+            {
+                return NotFound();
+            }
+
+            return Ok();
+        }
+
+        [HttpDelete("{guid}")]
+        public async Task<IActionResult> DeleteGUIDRecord(string guid)
+        {
+            // fix delete not found
+            var recordFound = await _service.DeleteAsync(guid);
+
+            if (!recordFound)
+            {
+                Console.WriteLine("Unable to delete record as GUID is not found: " + guid);
+                return NotFound();
+            }
+
+            return Ok();
+        }
+
+        public DateTimeOffset GetExpireDate(CreateGUID request)
+        {
+            if (request.Expires != null)
+            {
+                return request.Expires.Value;
+            }
+
+            return DateTimeOffset.UtcNow.AddDays(30);
+        }
+
         public string GenerateGUID()
         {
             // Create random byte array with 16 bytes
             var randomBytes = new byte[16]; 
+
             using (var rng = System.Security.Cryptography.RandomNumberGenerator.Create())
             {
                 rng.GetBytes(randomBytes); // Fill byte array with random data
