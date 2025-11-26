@@ -37,9 +37,9 @@ This is a simple **CRUD Web API** built with **ASP.NET Core** and **C#** for man
 **Clone the repository**
 
 `git clone https://github.com/alvin562/EaseioBackendCodingExercise.git`  
-`cd EaseioBackendCodingExercise`
+`cd EaseioBackendCodingExercise/EaseioBackendCodingExercise`
 
-Once you have the .NET SDK and dotnet CLI installed on your machine, you can start the application by running the following command in the root directory
+Once you have the .NET SDK and dotnet CLI installed on your machine, you can start the application by running the following command from the EaseioBackendCodingExercise/EaseioBackendCodingExercise directory
 
 `dotnet run --launch-profile https`
 
@@ -111,4 +111,12 @@ You should see a couple of info logs indicating the application is starting, eve
 - **Invalid GUID format** → `400 Bad Request`
 - **Updating or deleting a non-existent record** → `404 Not Found`
 - **Missing or invalid request body** → `400 Bad Request`
+
+---
+
+## Running the tests
+
+To run the unit tests for the application, make sure you're in the EaseioBackendCodingExercise.Tests folder. Then you can run the unit tests using the following command:
+
+`dotnet test`
 

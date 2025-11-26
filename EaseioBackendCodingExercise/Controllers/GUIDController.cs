@@ -13,9 +13,9 @@ namespace EaseioBackendCodingExercise.Controllers
     [Route("[controller]")]
     public class GuidController : ControllerBase
     {
-        private readonly GUIDService _service;
+        private readonly IGUIDService _service;
 
-        public GuidController(GUIDService service)
+        public GuidController(IGUIDService service)
         {
             _service = service;
         }

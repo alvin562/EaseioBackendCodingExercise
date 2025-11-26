@@ -2134,8 +2134,8 @@
     },
     "EaseioBackendCodingExercise/1.0.0": {
       "type": "project",
-      "path": "../EaseioBackendCodingExercise.csproj",
-      "msbuildProject": "../EaseioBackendCodingExercise.csproj"
+      "path": "../EaseioBackendCodingExercise/EaseioBackendCodingExercise.csproj",
+      "msbuildProject": "../EaseioBackendCodingExercise/EaseioBackendCodingExercise.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2173,8 +2173,8 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "/Users/Alvin.Dantic/Projects/EaseioBackendCodingExercise/EaseioBackendCodingExercise.csproj": {
-              "projectPath": "/Users/Alvin.Dantic/Projects/EaseioBackendCodingExercise/EaseioBackendCodingExercise.csproj"
+            "/Users/Alvin.Dantic/Projects/EaseioBackendCodingExercise/EaseioBackendCodingExercise/EaseioBackendCodingExercise.csproj": {
+              "projectPath": "/Users/Alvin.Dantic/Projects/EaseioBackendCodingExercise/EaseioBackendCodingExercise/EaseioBackendCodingExercise.csproj"
             }
           }
         }

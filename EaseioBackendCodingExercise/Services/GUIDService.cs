@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EaseioBackendCodingExercise.Services
 {
-    public class GUIDService
+    public class GUIDService : IGUIDService
     {
         private readonly GUIDDbContext _context;
 

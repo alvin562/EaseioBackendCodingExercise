@@ -10,7 +10,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddControllers();
 
 // Register GUID service for dependency injection
-builder.Services.AddScoped<GUIDService>();
+builder.Services.AddScoped<IGUIDService, GUIDService>();
 
 // Configure SQLite
 builder.Services.AddDbContext<GUIDDbContext>(options =>
